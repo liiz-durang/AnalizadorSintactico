@@ -15,7 +15,7 @@ namespace COMP{
     {
     private:        
         const int ERROR = -1; //Solo dejamos error, los tokens estan en Tokens.h
-        ifstream yyin; //Objeto para el archivo de entrada
+        
         int **transiciones;
         bool *acc;      //Indica si el ultimo estado visitado es de aceptación o no 
         string yytext;  //buffer de caracteres leídos.
@@ -24,6 +24,8 @@ namespace COMP{
         map<char, int> simbolos; //Sustituye a la función charToColumn
 
     public:
+        ifstream yyin; //Objeto para el archivo de entrada
+        
         Lexer(/* args */); //Constructor
         Lexer (string file);
         ~Lexer(); //Destructor

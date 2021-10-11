@@ -252,15 +252,14 @@ namespace COMP{
         int cc;         //valor del estado
         yytext = "";    //buffer inicia en cadena vacía      
         map<char,int> :: iterator it;
-        if(yyin.eof()) return 0;
+        //if(yyin.eof()) return 0;
 
 
         while(true){
             //cc = charToColumn(c); //pasamos el caracter a estad. -> Se sustituyo por map simbolos
             //Existe la transición
-            cc = simbolos[c];
-            //cout << "c: " << c << endl;
-            //cout << "CC: " << cc << endl;
+            //cc = simbolos[c];
+            //if(yyin.eof()) return 0;
 
             it = simbolos.find(c);
             if(it == simbolos.end()){
@@ -270,12 +269,17 @@ namespace COMP{
                 cc = it->second;
             }
 
+            //Descomentar en caso de emergencia!
+            //cout << "c: " << c << endl;
+            //cout << "CC: " << cc << endl;            
+            //cout << "q: " << q << endl;
+
             if(transiciones[q][cc]!=-1){ 
                 q=transiciones[q][cc];  //Actualizamos el estado actual.
                 //cout << "q: " << q << endl;
                 yytext+=c; 
                 getChar();           //Obtenemos el siguiente caracter.
-                //if(yyin.eof()) return token(q);
+                if(yyin.eof()) return token(q);
 
             }else{
 
@@ -292,7 +296,7 @@ namespace COMP{
                 }else{
                     
                     cout << "caracter no reconocido" << endl;
-                    return(0);
+                    return -1;
                     
                     
                 }
@@ -344,6 +348,9 @@ namespace COMP{
                 return ELSE; 
             case 31:
                 return WHILE;
+            default :
+                return -1;
+                
         }
     }
 

@@ -1,5 +1,6 @@
 #ifndef TOKENS_H
 #define TOKENS_H
+#include <map>
 
 /*Valores que nos retorna el Lexer al encontrar el token*/
 namespace COMP{
@@ -10,7 +11,6 @@ namespace COMP{
     const int ELSE      = 3;
     const int IF        = 4;
     const int WHILE     = 5;
-
     const int MAS       = 6;
     const int MENOS     = 7;
     const int MUL       = 8;
@@ -23,5 +23,7 @@ namespace COMP{
     const int COMA      = 15;
     const int NUMERO    = 16; //Entero o flotante
     const int ESP       = 17;
+
+    map<int, string> TOKENS;
 }
 #endif

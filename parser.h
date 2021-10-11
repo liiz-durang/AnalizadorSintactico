@@ -33,6 +33,7 @@ namespace COMP{
         void factor();
         void eat(int t);
         void error(string msg);
+        void parse();
 
     };
 }
