@@ -8,6 +8,7 @@ CPPOBJ= main LR0 Symbol Production Grammar
 
 FILES= $(addsuffix .cpp, $(CPPOBJ))
 OBJS = $(addsuffix .o, $(CPPOBJ))
+SOBJS = lexer
 
 CLEANLIST = $(addsuffix .o, $(OBJS))
 
@@ -16,8 +17,9 @@ CLEANLIST = $(addsuffix .o, $(OBJS))
 all: wc
 
 wc: $(FILES)
+	$(MAKE) $(SOBJS)
 	$(MAKE) $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(EXE) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(EXE) $(OBJS) lexer.o
 
 .PHONY: clean
 clean:
