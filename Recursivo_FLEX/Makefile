@@ -1,13 +1,14 @@
-CXX=g++
+CXX?=clang++
 EXE=Parser
 CXXDEBUG= -g -Wall
-CXXSTD=-std=c++17
+CXXSTD=-std=c++14
 CXXFLAGS= -Wno-deprecated-register -O0 $(CXXDEBUG) $(CXXSTD)
 
-CPPOBJ= main Lexer Parser
+CPPOBJ= main Parser
 
 FILES= $(addsuffix .cpp, $(CPPOBJ))
 OBJS = $(addsuffix .o, $(CPPOBJ))
+SOBJS = lexer
 
 CLEANLIST = $(addsuffix .o, $(OBJS))
 
@@ -16,9 +17,10 @@ CLEANLIST = $(addsuffix .o, $(OBJS))
 all: wc
 
 wc: $(FILES)
+	$(MAKE) $(SOBJS)
 	$(MAKE) $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $(EXE) $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $(EXE) $(OBJS) lexer.o
 
-.PHONY: clean
-clean:
-	rm -rf $(CLEANLIST)
+lexer: lexer.ll
+	flex $<
+	$(CXX) $(CXXFLAGS)	-c Lexer.cpp -o lexer.o
