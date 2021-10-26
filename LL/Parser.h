@@ -4,20 +4,18 @@
 #include <map>
 #include <stack>
 #include <vector>
+#include "Grammar.h"
+#include "Lexer.h"
 using namespace std;
 using namespace COMP;
-#include "symbol.h"
-#include "Production.h"
-#include "Lexer.h"
+
 
 class Parser{
     private:
         map <int, map<int,int>> table;
-        map<int, Symbol> syms;
-        vector<Production> prods;
+        Grammar grammar;
         Lexer *lexer;
         int token;
-        //table[i][j] = k;
     public:
         Parser(/*args*/);
         ~Parser();
@@ -25,6 +23,7 @@ class Parser{
         void loadProds();
         void loadTable();
         int parse();
+        void error(string msg);
 };
 
 #endif

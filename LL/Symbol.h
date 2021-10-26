@@ -4,23 +4,30 @@
 #include <string>
 using namespace std;
 
-enum TYPESYM {terminal, noterminal, cadena};
+enum TYPESYM {terminal, noterminal, cadenaVacia};
 class Symbol
 {
 private:
     string name;
     TYPESYM type;
     int id;
-    
+    int idx;
+
 public:
     Symbol(/* args */);
-    Symbol(string name, TYPESYM type, int id);
+    Symbol(string name, TYPESYM type, int id, int idx);
     ~Symbol();
-    
+
     void setName(string name);
-    void setType(TYPESYM ty);
+    void setType(TYPESYM type);
     void setId(int id);
+    void setIdx(int idx);
+
+    string getName();
+    TYPESYM getType();
     int getId();
+    int getIdx();
+
 };
 
 #endif

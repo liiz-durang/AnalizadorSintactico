@@ -1,29 +1,27 @@
 #ifndef TOKENS_H
 #define TOKENS_H
-#include <map>
 
 /*Valores que nos retorna el Lexer al encontrar el token*/
 namespace COMP{
 
 
-    const int INT       = 1;
-    const int FLOAT     = 2;
-    const int ELSE      = 3;
-    const int IF        = 4;
-    const int WHILE     = 5;
-    const int MAS       = 6;
-    const int MENOS     = 7;
-    const int MUL       = 8;
-    const int DIV       = 9;
-    const int ASIG      = 10;
-    const int LPAR      = 11;
-    const int RPAR      = 12;
-    const int ID        = 13; 
-    const int PYC       = 14;
-    const int COMA      = 15;
-    const int NUMERO    = 16; //Entero o flotante
-    const int ESP       = 17;
-
-    map<int, string> TOKENS;
+    const int MAS      = 1;
+    const int MENOS    = 2;
+    const int MUL      = 3;
+    const int DIV      = 4;
+    const int ASIG     = 5;
+    const int LPAR     = 6;
+    const int RPAR     = 7;
+    const int COMA     = 8;
+    const int PYC      = 9;
+    const int ID       = 10;
+    const int IF       = 11;
+    const int INT      = 12;
+    const int WHILE    = 13; 
+    const int ELSE     = 14;
+    const int FLOAT    = 15;
+    const int NUMERO   = 16; //Entero o flotante
+    const int LKEY     = 17;
+    const int RKEY     = 18;
 }
 #endif

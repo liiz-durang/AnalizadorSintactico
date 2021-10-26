@@ -7,20 +7,13 @@ class Production
 {
 private:
     int head;
-    vector<int> body; 
+    vector<int> body;
 public:
     Production(/* args */);
-    Production(int head, vector <int> body);
+    Production(int head, vector<int> body);
     ~Production();
+    int getHead();
+    vector<int> getBody();
 };
-
-Production::Production(/* args */)
-{
-}
-
-Production::~Production()
-{
-}
-
 
 #endif
